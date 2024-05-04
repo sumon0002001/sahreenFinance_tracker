@@ -64,3 +64,7 @@ html {
 /* Additional styles to ensure text and elements are vertically aligned properly */
 .navbar * {
 }
+
+h1 {
+  color: #333;
+}

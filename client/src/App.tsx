@@ -1,16 +1,23 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Dashboard from "./pages/dashboard";
+import Auth from "./pages/auth";
+import { SignedIn, UserButton } from "@clerk/clerk-react";
 
 function App() {
   return (
     <Router>
       <div className="app-container">
         <div className="navbar">
-          <Routes>
-            <Route path="/" element={<h1>Dashboard</h1>} />
-            <Route path="/auth" element={<h1>Sign In</h1>} />
-          </Routes>
+          <Link to="/">Dashboard</Link>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
         </div>
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/auth" element={<Auth />} />
+        </Routes>
       </div>
     </Router>
   );
