@@ -21,6 +21,11 @@ const FinancialRecordForm = () => {
       category: category,
       paymentMethod: paymentMethod,
     };
+
+    setDescription("");
+    setAmount("");
+    setCategory("");
+    setPaymentMethod("");
   };
   return (
     <div className="form-container">
