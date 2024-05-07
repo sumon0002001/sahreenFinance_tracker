@@ -1,11 +1,13 @@
 import { useUser } from "@clerk/clerk-react";
 import React, { useState } from "react";
+import { useFinancialRecord } from "../../contexts/financial-record-context";
 
 const FinancialRecordForm = () => {
   const [description, setDescription] = useState<string>("");
   const [amount, setAmount] = useState<string>("");
   const [category, setCategory] = useState<string>("");
   const [paymentMethod, setPaymentMethod] = useState<string>("");
+  const { addRecord } = useFinancialRecord();
 
   const { user } = useUser();
 
@@ -14,14 +16,14 @@ const FinancialRecordForm = () => {
     // Perform form submission logic here
 
     const newRecord = {
-      userId: user?.id,
-      date: new Date().toISOString(),
+      userId: user?.id ?? "",
+      date: new Date(),
       description: description,
       amount: parseFloat(amount),
       category: category,
       paymentMethod: paymentMethod,
     };
-
+    addRecord(newRecord);
     setDescription("");
     setAmount("");
     setCategory("");
