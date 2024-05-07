@@ -1,5 +1,6 @@
 import express, { Express } from "express";
 import mongoose from "mongoose";
+import financialRecordRouter from "./routes/financial-records";
 
 const app: Express = express();
 const port = process.env.PORT || 3001;
@@ -14,6 +15,8 @@ mongoose
   .then(() => console.log("connected to the database"))
   .catch((err) => console.error("failed to connect to database", err));
 
+
+app.use("/financial-records", financialRecordRouter)
 app.listen(port, () => {
   console.log("server is running on port 3001 ");
 });
